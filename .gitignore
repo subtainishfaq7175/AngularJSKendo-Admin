@@ -4,3 +4,9 @@ bower_components/
 #dist/
 gen/
 docs/
+
+.idea/workspace.xml
+
+.idea/vcs.xml
+
+.idea/workspace.xml
