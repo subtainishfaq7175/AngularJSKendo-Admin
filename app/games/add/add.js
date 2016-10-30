@@ -5,15 +5,27 @@ angular.module('yapp')
   .controller('GamesAddCtrl', function($scope, $state) {
 
     $scope.$state = $state;
+    $scope.dateString;// = $state;
     $scope.html;
-    $(document).ready(function() {
-      $("#files").kendoUpload({
-        async: {
-          saveUrl: "save",
-          removeUrl: "remove",
-          autoUpload: true
+    $scope.value;
+    $scope.value2;
+    $scope.selectOptions = {
+      placeholder: "Select products...",
+      dataTextField: "ProductName",
+      dataValueField: "ProductID",
+      valuePrimitive: true,
+      autoBind: false,
+      dataSource: {
+        type: "odata",
+        serverFiltering: true,
+        transport: {
+          read: {
+            url: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Products",
+          }
         }
-      });
-    });
+      }
+    };
+    $scope.selectedIds = [ 4, 7 ];
+
 
   });
