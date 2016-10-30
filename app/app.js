@@ -115,6 +115,12 @@ angular
             controller: 'MessagesCtrl',
             templateUrl: 'messages/messages.html'
           })
+ .state('messagesadd', {
+            url: '/messagesadd',
+            parent: 'dashboard',
+            controller: 'MessagesAddCtrl',
+            templateUrl: 'messages/add/add.html'
+          })
  .state('comments', {
             url: '/comments',
             parent: 'dashboard',
