@@ -5,6 +5,31 @@ angular.module('yapp')
   .controller('FaqsCtrl', function($scope, $state) {
 
     $scope.$state = $state;
-    console.log("faqs");
+    $scope.mainGridOptions={
+      dataSource: {
+        type: "json",
+        transport: {
+          read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Employees"
+        },
+        pageSize: 5,
+        serverPaging: true,
+        serverSorting: true
+      },
+      sortable: true,
+      pageable: true,
+      columns: [{
+        field: "Username",
+        title: "User name",
+        width: "120px"
+      },{
+        field: "Comments",
+        title: "Comments",
+        width: "120px"
+      },{
+        field: "Date",
+        title: "Date",
+        width: "120px"
+      }]
+    };
 
   });
