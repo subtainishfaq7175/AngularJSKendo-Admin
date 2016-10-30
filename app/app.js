@@ -11,7 +11,8 @@
 angular
   .module('yapp', [
     'ui.router',
-    'ngAnimate'
+    'ngAnimate',
+    'kendo.directives'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 

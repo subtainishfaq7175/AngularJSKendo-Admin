@@ -5,6 +5,17 @@ angular.module('yapp')
   .controller('NewsCtrl', function($scope, $state) {
 
     $scope.$state = $state;
+    $scope.html;// = $state;
     console.log("news");
+
+    $(document).ready(function() {
+      $("#files").kendoUpload({
+        async: {
+          saveUrl: "save",
+          removeUrl: "remove",
+          autoUpload: true
+        }
+      });
+    });
 
   });
