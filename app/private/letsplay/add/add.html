@@ -1,0 +1,123 @@
+<div>
+    <a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Masterdata</a>
+    <h3>Letsplay <small>Add/Remove Letsplay</small></h3>
+    <div class="jumbotron box">
+<h4>Picture</h4>
+
+
+
+        <div class="container" >
+            <h6>Show in slider</h6>
+            <input class="k-content" type="checkbox" name="vehicle" value="Bike">
+            <br>
+            <br>
+            <div>
+                <div >
+                    <h6> Select Cover Image</h6>  <br>
+                    <input name="files"
+                           kendo-upload
+                           type="file" />
+                    <p>Width=280px
+                    <br>
+                    Height=392px</p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="jumbotron box">
+
+        <h4>Title and details</h4>
+
+
+
+        <div class="container" >
+            <h6>Title</h6>
+            <input k-content style="width: 100%">
+            <br>
+            <h6>Short Title</h6>
+            <input k-content style="width: 100%">
+            <br>
+
+            <h6>Alternate Title</h6>
+            <input k-content style="width: 100%">
+            <br>
+
+
+            <h6>Release Date</h6>
+            <input kendo-date-picker
+                   style="width: 100%;"
+                   ng-model="dateString"
+            />
+
+
+            <h6>Description</h6>
+            <textarea kendo-editor k-ng-model="html"></textarea><br>
+
+            <h6>Tags</h6>
+            <select kendo-multi-select k-options="selectOptions" k-ng-model="selectedIds" style="width: 100%;"></select>
+
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="jumbotron box">
+
+        <h4>Additional Information</h4>
+
+
+
+        <div class="container" >
+            <h6>Number of Episodes</h6>
+            <input kendo-numeric-text-box k-min="0" k-max="100" k-ng-model="value" style="width: 100%;" />
+            <br>
+            <h6>Length (mins)</h6>
+            <input kendo-numeric-text-box k-min="0" k-max="500" k-ng-model="value2" style="width: 100%;" />
+            <br>
+
+            <h6>Genre</h6>
+            <select kendo-multi-select k-options="selectOptions" k-ng-model="selectedIds" style="width: 100%;"></select>
+            <br>
+
+            <h6>Censored?</h6>
+            <input class="k-content" type="checkbox" name="vehicle" value="Bike">
+            <br>
+
+
+            <h6>Channel</h6>
+            <input k-content style="width: 100%">
+            <br>
+
+
+        </div>
+
+
+    </div>
+    <div class="jumbotron box">
+
+        <h4>Screenshots</h4>
+
+
+
+        <div class="container" >
+            <h6>Screenshots</h6>
+            <input name="files"
+                   kendo-upload
+                   type="file" />
+
+
+        </div>
+
+
+    </div>
+</div>
+

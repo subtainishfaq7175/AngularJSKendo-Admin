@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @ngdoc overview
+ * @ngdoc home
  * @name yapp
  * @description
  * # yapp
@@ -12,126 +12,134 @@ angular
   .module('yapp', [
     'ui.router',
     'ngAnimate',
-    'kendo.directives'
+    'kendo.directives',
+    'ngMaterial'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.when('/dashboard', '/dashboard/overview');
+    $urlRouterProvider.when('/dashboard', '/dashboard/home');
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
       .state('base', {
         abstract: true,
         url: '',
-        templateUrl: 'views/base.html'
+        templateUrl: 'private/views/base.html'
       })
         .state('login', {
           url: '/login',
           parent: 'base',
-          templateUrl: 'login/login.html',
+          templateUrl: 'public/login/login.html',
           controller: 'LoginCtrl'
         })
         .state('dashboard', {
           url: '/dashboard',
           parent: 'base',
-          templateUrl: 'dashboard/dashboard.html',
+          templateUrl: 'private/dashboard/dashboard.html',
           controller: 'DashboardCtrl'
         })
-          .state('overview', {
-            url: '/overview',
+          .state('home', {
+            url: '/home',
             parent: 'dashboard',
-            controller: 'OverviewCtrl',
-            templateUrl: 'overview/overview.html'
+            controller: 'HomeCtrl',
+            templateUrl: 'private/home/home.html'
           })
-          .state('reports', {
-            url: '/reports',
+          .state('masterdata', {
+            url: '/masterdata',
             parent: 'dashboard',
-            controller: 'ReportsCtrl',
-            templateUrl: 'reports/reports.html'
+            controller: 'MasterdataCtrl',
+            templateUrl: 'private/masterdata/masterdata.html'
           })
       .state('news', {
             url: '/news',
             parent: 'dashboard',
             controller: 'NewsCtrl',
-            templateUrl: 'news/news.html'
+            templateUrl: 'private/news/news.html'
           })
       .state('newsadd', {
         url: '/newsadd',
         parent: 'dashboard',
         controller: 'NewsAddCtrl',
-        templateUrl: 'news/add/add.html'
+        templateUrl: 'private/news/add/add.html'
       })
       .state('games', {
             url: '/games',
             parent: 'dashboard',
             controller: 'GamesCtrl',
-            templateUrl: 'games/games.html'
+            templateUrl: 'private/games/games.html'
           })
       .state('gamesadd', {
         url: '/gamesadd',
         parent: 'dashboard',
         controller: 'GamesAddCtrl',
-        templateUrl: 'games/add/add.html'
+        templateUrl: 'private/games/add/add.html'
       })
       .state('letsplay', {
             url: '/letsplay',
             parent: 'dashboard',
             controller: 'LetsplayCtrl',
-            templateUrl: 'letsplay/letsplay.html'
+            templateUrl: 'private/letsplay/letsplay.html'
           })
       .state('letsplayadd', {
         url: '/letsplayadd',
         parent: 'dashboard',
         controller: 'LetsplayAddCtrl',
-        templateUrl: 'letsplay/add/add.html'
+        templateUrl: 'private/letsplay/add/add.html'
       })
  .state('walkthrough', {
             url: '/walkthrough',
             parent: 'dashboard',
             controller: 'WalkthroughCtrl',
-            templateUrl: 'walkthrough/walkthrough.html'
+            templateUrl: 'private/walkthrough/walkthrough.html'
           })
       .state('walkthroughadd', {
         url: '/walkthroughadd',
         parent: 'dashboard',
         controller: 'WalkthroughAddCtrl',
-        templateUrl: 'walkthrough/add/add.html'
+        templateUrl: 'private/walkthrough/add/add.html'
       })
  .state('faqs', {
             url: '/faqs',
             parent: 'dashboard',
             controller: 'FaqsCtrl',
-            templateUrl: 'faqs/faqs.html'
+            templateUrl: 'private/faqs/faqs.html'
           })
       .state('faqsadd', {
         url: '/faqsadd',
         parent: 'dashboard',
         controller: 'FaqsAddCtrl',
-        templateUrl: 'faqs/add/add.html'
+        templateUrl: 'private/faqs/add/add.html'
       })
  .state('messages', {
             url: '/messages',
             parent: 'dashboard',
             controller: 'MessagesCtrl',
-            templateUrl: 'messages/messages.html'
+            templateUrl: 'private/messages/messages.html'
           })
  .state('messagesadd', {
             url: '/messagesadd',
             parent: 'dashboard',
             controller: 'MessagesAddCtrl',
-            templateUrl: 'messages/add/add.html'
+            templateUrl: 'private/messages/add/add.html'
           })
  .state('comments', {
             url: '/comments',
             parent: 'dashboard',
             controller: 'CommentsCtrl',
-            templateUrl: 'comments/comments.html'
+            templateUrl: 'private/comments/comments.html'
           })
       .state('commentsadd', {
         url: '/commentsadd',
         parent: 'dashboard',
         controller: 'CommentsAddCtrl',
-        templateUrl: 'comments/add/add.html'
+        templateUrl: 'private/comments/add/add.html'
+      })
+
+      .state('profiles', {
+        url: '/profiles',
+        parent: 'dashboard',
+        controller: 'ProfilesCtrl',
+        templateUrl: 'private/profiles/profiles.html'
       });
 
   });

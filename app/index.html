@@ -10,7 +10,13 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
+<!--
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+      <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
       <link rel="stylesheet" href="../bower_components/kendo/styles/web/kendo.common.min.css" />
       <link rel="stylesheet" href="../bower_components/kendo/styles/web/kendo.default.min.css" />
@@ -47,6 +53,7 @@
     <script src="../bower_components/jquery-2.2.4/index.js"></script>
 
 
+
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>
@@ -58,27 +65,39 @@
     <script src="../bower_components/kendo/js/kendo.all.js"></script>
 
 
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="app.js"></script>
-    <script src="login/login.js"></script>
-    <script src="dashboard/dashboard.js"></script>
-    <script src="overview/overview.js"></script>
-    <script src="reports/reports.js"></script>
-    <script src="letsplay/letsplay.js"></script>
-    <script src="letsplay/add/add.js"></script>
-    <script src="games/games.js"></script>
-    <script src="games/add/add.js"></script>
-    <script src="news/news.js"></script>
-    <script src="news/add/add.js"></script>
-    <script src="walkthrough/walkthrough.js"></script>
-    <script src="walkthrough/add/add.js"></script>
-    <script src="messages/messages.js"></script>
-    <script src="messages/add/add.js"></script>
-    <script src="faqs/faqs.js"></script>
-    <script src="faqs/add/add.js"></script>
-    <script src="comments/comments.js"></script>
-    <script src="comments/add/add.js"></script>
-    <script src="comments/comments.service.js"></script>
+    <script src="public/login/login.js"></script>
+    <script src="private/dashboard/dashboard.js"></script>
+    <script src="private/home/home.js"></script>
+    <script src="private/masterdata/masterdata.js"></script>
+    <script src="private/letsplay/letsplay.js"></script>
+    <script src="private/letsplay/add/add.js"></script>
+    <script src="private/games/games.js"></script>
+    <script src="private/games/add/add.js"></script>
+    <script src="private/news/news.js"></script>
+    <script src="private/news/add/add.js"></script>
+    <script src="private/walkthrough/walkthrough.js"></script>
+    <script src="private/walkthrough/add/add.js"></script>
+    <script src="private/messages/messages.js"></script>
+    <script src="private/messages/add/add.js"></script>
+    <script src="private/faqs/faqs.js"></script>
+    <script src="private/faqs/add/add.js"></script>
+    <script src="private/comments/comments.js"></script>
+    <script src="private/comments/add/add.js"></script>
+    <script src="private/comments/comments.service.js"></script>
+    <script src="private/profiles/profiles.js"></script>
+    <script src="common/directives/addwidget/addWidget.js"></script>
+    <script src="common/directives/addLanguage/addLanguage.js"></script>
     <!-- endbuild -->
   </body>
 </html>
