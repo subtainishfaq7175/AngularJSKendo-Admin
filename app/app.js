@@ -104,6 +104,12 @@ angular
         controller: 'WalkthroughAddCtrl',
         templateUrl: 'private/walkthrough/add/add.html'
       })
+      .state('walkthroughedit', {
+        url: '/walkthroughedit',
+        parent: 'dashboard',
+        controller: 'WalkthroughEditCtrl',
+        templateUrl: 'private/walkthrough/edit/edit.html'
+      })
  .state('faqs', {
             url: '/faqs',
             parent: 'dashboard',
