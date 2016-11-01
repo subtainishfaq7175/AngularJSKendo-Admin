@@ -86,6 +86,12 @@ angular
         controller: 'LetsplayAddCtrl',
         templateUrl: 'private/letsplay/add/add.html'
       })
+      .state('letsplayedit', {
+        url: '/letsplayedit',
+        parent: 'dashboard',
+        controller: 'LetsplayEditCtrl',
+        templateUrl: 'private/letsplay/edit/edit.html'
+      })
  .state('walkthrough', {
             url: '/walkthrough',
             parent: 'dashboard',
