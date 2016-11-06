@@ -8,13 +8,36 @@
  * Controller of yapp
  */
 angular.module('yapp')
-  .controller('LoginCtrl', function($scope, $location) {
+  .controller('LoginCtrl', function($scope, $location,AuthenticationService) {
 
-    $scope.submit = function() {
+    var vm = $scope;
 
-      $location.path('/dashboard');
+    vm.login = login;
+    vm.credentials=
+    {
+      name : undefined,
+      password:undefined
+    };
 
-      return false;
-    }
+
+
+    function initController() {
+      // reset login status
+      AuthenticationService.Logout();
+    };
+
+    function login() {
+      vm.loading = true;
+      AuthenticationService.Login(vm.credentials.name, vm.credentials.password, function (result)
+      {
+        debugger;
+        if (result === true) {
+          $location.path('/dashboard');
+        } else {
+          vm.error = 'Username or password is incorrect';
+          vm.loading = false;
+        }
+      });
+    };
 
   });

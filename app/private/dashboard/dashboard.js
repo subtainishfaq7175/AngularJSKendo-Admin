@@ -8,8 +8,15 @@
  * Controller of yapp
  */
 angular.module('yapp')
-  .controller('DashboardCtrl', function($scope, $state) {
+  .controller('DashboardCtrl', function($scope, $state,AuthenticationService) {
 
     $scope.$state = $state;
+    $scope.logout = logout();
+
+    function logout() {
+      // reset login status
+      AuthenticationService.Logout();
+    };
+
 
   });

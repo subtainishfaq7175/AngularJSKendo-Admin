@@ -2,7 +2,8 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('GamesAddCtrl', function($scope, $state) {
+  .controller('GamesAddCtrl', function($scope, $state,simpleObj) {
+    console.log(simpleObj);
 
     $scope.$state = $state;
     $scope.dateString;// = $state;

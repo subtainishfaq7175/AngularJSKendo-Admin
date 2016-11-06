@@ -2,7 +2,8 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('LetsplayEditCtrl', function($scope, $state) {
+  .controller('LetsplayEditCtrl', function($scope, $state,simpleObj) {
+    console.log(simpleObj);
 
     $scope.$state = $state;
     $scope.dateString;// = $state;

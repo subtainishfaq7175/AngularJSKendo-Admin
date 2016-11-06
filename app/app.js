@@ -13,12 +13,15 @@ angular
     'ui.router',
     'ngAnimate',
     'kendo.directives',
-    'ngMaterial'
+    'ngMaterial',
+    'ngStorage'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when('/dashboard', '/dashboard/home');
     $urlRouterProvider.otherwise('/login');
+    //  delete $httpProvider.defaults.headers.common["X-Requested-With"];
+
 
     $stateProvider
       .state('base', {
@@ -69,7 +72,16 @@ angular
             templateUrl: 'private/games/games.html'
           })
       .state('gamesadd', {
-        url: '/gamesadd',
+        resolve:{
+
+          simpleObj:  function(gamesService,$stateParams)
+          {
+            //get game here
+
+
+            return gamesService.getGameById($stateParams.id);
+          }},
+        url: '/gamesadd/:id',
         parent: 'dashboard',
         controller: 'GamesAddCtrl',
         templateUrl: 'private/games/add/add.html'
@@ -87,7 +99,17 @@ angular
         templateUrl: 'private/letsplay/add/add.html'
       })
       .state('letsplayedit', {
-        url: '/letsplayedit',
+
+        resolve:{
+
+          simpleObj:  function(letsplayService,$stateParams)
+          {
+            //get game here
+
+
+            return letsplayService.getLetsplayById($stateParams.id);
+          }},
+        url: '/letsplayedit/:id',
         parent: 'dashboard',
         controller: 'LetsplayEditCtrl',
         templateUrl: 'private/letsplay/edit/edit.html'
@@ -105,7 +127,16 @@ angular
         templateUrl: 'private/walkthrough/add/add.html'
       })
       .state('walkthroughedit', {
-        url: '/walkthroughedit',
+        resolve:{
+
+          simpleObj:  function(walkthroughService,$stateParams)
+          {
+            //get game here
+
+
+            return walkthroughService.getWalkthroughById($stateParams.id);
+          }},
+        url: '/walkthroughedit/:id',
         parent: 'dashboard',
         controller: 'WalkthroughEditCtrl',
         templateUrl: 'private/walkthrough/edit/edit.html'
@@ -154,4 +185,26 @@ angular
         templateUrl: 'private/profiles/profiles.html'
       });
 
-  });
+  })
+.run(run);
+
+function run($rootScope, $http, $state, $localStorage) {
+  // keep user logged in after page refresh
+  if ($localStorage.currentUser) {
+    $http.defaults.headers.common.Authorization = $localStorage.currentUser.token;
+  }
+
+  // redirect to login page if not logged in and trying to access a restricted page
+
+  $rootScope.$on('$stateChangeStart',
+    function(event, toState, toParams, fromState, fromParams, options)
+    {
+      var publicPages = ['login'];
+      var restrictedPage = publicPages.indexOf(toState.name) === -1;
+      if (restrictedPage && !$localStorage.currentUser) {
+     //   event.preventDefault();
+        $state.go('login');
+      }
+    })
+
+}
