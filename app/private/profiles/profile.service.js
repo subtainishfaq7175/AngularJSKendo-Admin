@@ -5,19 +5,22 @@
  * Created by subtainishfaq on 10/13/16.
  */
 
-angular.module("yapp").factory('profileService',['$http','SeatEatsConstants', function($http,SeatEatsConstants){
 
-  var profile = {};
+angular.module("yapp").factory('profilesService',['$http','SeatEatsConstants', function($http,SeatEatsConstants){
 
-  profile.getLetsplayById= function (ID)
+  var profiles = {};
+  profiles.deletsProfilesById=function (id)
   {
+    return $http.delete(SeatEatsConstants.AppUrlApi+'users/'+ id);
 
-    var promise = $http.get(SeatEatsConstants.AppUrlApi+'profiles/'+ID);
-    return promise;
   };
 
+  profiles.getProfileById=function (id)
+  {
+    return $http.get(SeatEatsConstants.AppUrlApi+'users/'+ id);
 
+  };
 
-  return profile;
+  return profiles;
 
 }]);

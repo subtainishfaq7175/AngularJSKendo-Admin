@@ -22,6 +22,13 @@ angular.module("yapp").factory('gamesService',['$http','SeatEatsConstants', func
     return promise;
   };
 
+  game.deleteGameById= function (ID)
+  {
+
+    var promise = $http.delete(SeatEatsConstants.AppUrlApi+'games/'+ID);
+    return promise;
+  };
+
 
 
   return game;

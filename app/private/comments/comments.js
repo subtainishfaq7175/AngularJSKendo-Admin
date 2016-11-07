@@ -2,15 +2,18 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('CommentsCtrl', function($scope, $state, SeatEatsConstants) {
+  .controller('CommentsCtrl', function($scope, $state, SeatEatsConstants,commentsService) {
 
     $scope.$state = $state;
-    $scope.editComment = function (ID)
-    {
-      console.log(ID);
 
-      $state.go('comments',{id:ID});
-    };
+    $scope.deleteComment = function (ID) {
+      commentsService.deletsCommentsById(ID).then(function (response)
+        {
+          $state.reload();
+        });
+
+      };
+
     $scope.mainGridOptions={
       dataSource: {
         type: "json",
@@ -34,9 +37,9 @@ angular.module('yapp')
         title: "Content",
         width: "120px"
       },{
-        title: "Edit",
+        title: "Delete",
         width: "120px",
-        template: '<a ng-click="editComment(dataItem._id)" class="btn k-primary btn-outline btn-rounded btn-sm">edit</a>'
+        template: '<a ng-click="deleteComment(dataItem._id)" class="btn k-primary btn-outline btn-rounded btn-sm">Delete</a>'
       }]
     };
   });

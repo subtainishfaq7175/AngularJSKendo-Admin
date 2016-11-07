@@ -28,6 +28,11 @@ faq.getFaqsById=function (id)
  return $http.get(SeatEatsConstants.AppUrlApi+'faqs/'+ id);
 
 };
+faq.deleteFaqsById=function (id)
+{
+ return $http.delete(SeatEatsConstants.AppUrlApi+'faqs/'+ id);
+
+};
 
 
   return faq;

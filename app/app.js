@@ -74,6 +74,12 @@ angular
             templateUrl: 'private/games/games.html'
           })
       .state('gamesadd', {
+        url: '/gamesadd',
+        parent: 'dashboard',
+        controller: 'GamesAddCtrl',
+        templateUrl: 'private/games/add/add.html'
+      })
+      .state('gamesedit', {
         resolve:{
 
           simpleObj:  function(gamesService,$stateParams)
@@ -83,10 +89,10 @@ angular
 
             return gamesService.getGameById($stateParams.id);
           }},
-        url: '/gamesadd/:id',
+        url: '/gamesedit/:id',
         parent: 'dashboard',
-        controller: 'GamesAddCtrl',
-        templateUrl: 'private/games/add/add.html'
+        controller: 'GamesEditCtrl',
+        templateUrl: 'private/games/edit/edit.html'
       })
       .state('letsplay', {
             url: '/letsplay',
@@ -200,6 +206,29 @@ angular
         parent: 'dashboard',
         controller: 'ProfilesCtrl',
         templateUrl: 'private/profiles/profiles.html'
+      })
+      .state('profilesadd', {
+        url: '/profilesadd',
+        parent: 'dashboard',
+        controller: 'ProfilesAddCtrl',
+        templateUrl: 'private/profiles/add/add.html'
+      })
+      .state('profilesedit', {
+
+      resolve:{
+
+        simpleObj:  function(profilesService,$stateParams)
+        {
+          //get game here
+
+
+          return profilesService.getProfileById($stateParams.id);
+        }},
+
+        url: '/profilesedit/:id',
+        parent: 'dashboard',
+        controller: 'ProfilesEditCtrl',
+        templateUrl: 'private/profiles/edit/edit.html'
       });
 
   })

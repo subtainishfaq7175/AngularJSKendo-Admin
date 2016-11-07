@@ -5,11 +5,16 @@
  * Created by subtainishfaq on 10/13/16.
  */
 
-angular.module("yapp").factory('commentsService',['$http', function($http){
+angular.module("yapp").factory('commentsService',['$http','SeatEatsConstants', function($http,SeatEatsConstants){
 
-  var home = {};
+  var comments = {};
+//deleteCommentsById
+  comments.deletsCommentsById=function (id)
+  {
+    return $http.delete(SeatEatsConstants.AppUrlApi+'comments/'+ id);
 
+  };
 
-  return home;
+  return comments;
 
 }]);

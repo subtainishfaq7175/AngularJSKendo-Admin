@@ -2,15 +2,22 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('GamesCtrl', function($scope, $state,SeatEatsConstants) {
+  .controller('GamesCtrl', function($scope, $state,SeatEatsConstants,gamesService) {
 
     $scope.$state = $state;
 
 
     $scope.editGame = function (ID) {
-    console.log(ID);
+      $state.go('gamesedit',{id:ID});
+    };
 
-      $state.go('gamesadd',{id:ID});
+    $scope.deleteGame = function (ID) {
+      gamesService.deleteGameById(ID).then(function (response)
+      {
+        $state.reload();
+
+      });
+
     };
 
     $scope.mainGridOptions={
@@ -38,7 +45,11 @@ angular.module('yapp')
       },{
         title: "Edit",
         width: "120px",
-        template: '<a ng-click="editGame(dataItem._id)" class="btn k-primary btn-outline btn-rounded btn-sm">edit</a>'
+        template: '<a ng-click="editGame(dataItem._id)" class="btn k-primary btn-outline btn-rounded btn-sm">Edit</a>'
+      },{
+        title: "Delete",
+        width: "120px",
+        template: '<a ng-click="deleteGame(dataItem._id)" class="btn k-primary btn-outline btn-rounded btn-sm">Delete</a>'
       }]
     };
 
