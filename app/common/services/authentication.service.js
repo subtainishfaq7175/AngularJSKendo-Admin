@@ -29,6 +29,8 @@
             // add jwt token to auth header for all requests made by the $http service
             $http.defaults.headers.common.Authorization = response.token;
 
+
+
             // execute callback with true to indicate successful login
             callback(true);
           } else {

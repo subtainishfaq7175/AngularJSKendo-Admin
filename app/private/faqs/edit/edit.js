@@ -2,17 +2,17 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('FaqsAddCtrl', function($scope, $state,faqsService) {
+  .controller('FaqsEditCtrl', function($scope, $state,faqsService,simpleObj) {
 
     $scope.$state = $state;
-    $scope.model={};
+    $scope.model=simpleObj.data;
     $scope.publishFaq=function ()
     {
-      faqsService.postFaq($scope.model).then(function (response)
+      faqsService.updateFaq($scope.model).then(function (response)
       {
 
         console.log(response);
-        debugger;
+        $state.go("faqs");
 
       })
     };

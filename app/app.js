@@ -23,6 +23,8 @@ angular
     //  delete $httpProvider.defaults.headers.common["X-Requested-With"];
 
 
+
+
     $stateProvider
       .state('base', {
         abstract: true,
@@ -153,6 +155,21 @@ angular
         controller: 'FaqsAddCtrl',
         templateUrl: 'private/faqs/add/add.html'
       })
+      .state('faqsedit', {
+        resolve:{
+
+          simpleObj:  function(faqsService,$stateParams)
+          {
+            //get game here
+
+
+            return faqsService.getFaqsById($stateParams.id);
+          }},
+        url: '/faqsedit/:id',
+        parent: 'dashboard',
+        controller: 'FaqsEditCtrl',
+        templateUrl: 'private/faqs/edit/edit.html'
+      })
  .state('messages', {
             url: '/messages',
             parent: 'dashboard',
@@ -202,7 +219,6 @@ function run($rootScope, $http, $state, $localStorage) {
       var publicPages = ['login'];
       var restrictedPage = publicPages.indexOf(toState.name) === -1;
       if (restrictedPage && !$localStorage.currentUser) {
-     //   event.preventDefault();
         $state.go('login');
       }
     })

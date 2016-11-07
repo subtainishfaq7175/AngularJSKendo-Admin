@@ -20,11 +20,16 @@ angular.module('yapp')
     };
 
 
+    initController();
 
     function initController() {
       // reset login status
       AuthenticationService.Logout();
     };
+
+
+
+
 
     function login() {
       vm.loading = true;

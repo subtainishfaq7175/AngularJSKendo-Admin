@@ -5,11 +5,31 @@
  * Created by subtainishfaq on 10/13/16.
  */
 
-angular.module("yapp").factory('faqsService',['$http', function($http){
+angular.module("yapp").factory('faqsService',['$http','SeatEatsConstants', function($http,SeatEatsConstants){
 
-  var home = {};
+  var faq = {};
+
+faq.postFaq=function (obj)
+{
+ return $http.post(SeatEatsConstants.AppUrlApi+'faqs', obj)
+
+};
 
 
-  return home;
+faq.updateFaq=function (obj)
+{
+ return $http.put(SeatEatsConstants.AppUrlApi+'faqs/'+obj._id, obj)
+
+};
+
+
+faq.getFaqsById=function (id)
+{
+ return $http.get(SeatEatsConstants.AppUrlApi+'faqs/'+ id);
+
+};
+
+
+  return faq;
 
 }]);

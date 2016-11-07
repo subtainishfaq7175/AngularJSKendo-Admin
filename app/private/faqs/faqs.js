@@ -5,11 +5,10 @@ angular.module('yapp')
   .controller('FaqsCtrl', function($scope, $state, SeatEatsConstants) {
 
     $scope.$state = $state;
-    $scope.editFaq = function (ID)
-    {
+    $scope.editFaq = function (ID) {
       console.log(ID);
 
-      $state.go('faqs',{id:ID});
+      $state.go('faqsedit',{id:ID});
     };
     $scope.mainGridOptions={
       dataSource: {
@@ -39,5 +38,6 @@ angular.module('yapp')
         template: '<a ng-click="editFaq(dataItem._id)" class="btn k-primary btn-outline btn-rounded btn-sm">edit</a>'
       }]
     };
+
 
   });
