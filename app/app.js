@@ -61,11 +61,28 @@ angular
             controller: 'NewsCtrl',
             templateUrl: 'private/news/news.html'
           })
-      .state('newsadd', {
-        url: '/newsadd',
+      .state('newsadd',
+        {
+         url: '/newsadd',
         parent: 'dashboard',
         controller: 'NewsAddCtrl',
         templateUrl: 'private/news/add/add.html'
+      })
+      .state('newsedit', {
+        resolve:{
+
+          simpleObj:  function(newsService,$stateParams)
+          {
+            //get game here
+
+
+            return newsService.getNewsById($stateParams.id);
+          }},
+
+        url: '/newsedit/:id',
+        parent: 'dashboard',
+        controller: 'NewsEditCtrl',
+        templateUrl: 'private/news/edit/edit.html'
       })
       .state('games', {
             url: '/games',
