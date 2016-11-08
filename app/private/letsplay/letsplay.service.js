@@ -16,6 +16,13 @@ angular.module("yapp").factory('letsplayService',['$http','SeatEatsConstants', f
     return promise;
   };
 
+  letsplay.deleteLetsplayById= function (ID)
+  {
+
+    var promise = $http.delete(SeatEatsConstants.AppUrlApi+'letsplays/'+ID);
+    return promise;
+  };
+
 
 
   return letsplay;

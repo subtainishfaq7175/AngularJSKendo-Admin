@@ -1,13 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc home
- * @name yapp
- * @description
- * # yapp
- *
- * Main module of the application.
- */
+
 angular
   .module('yapp', [
     'ui.router',

@@ -16,6 +16,13 @@ angular.module("yapp").factory('walkthroughService',['$http','SeatEatsConstants'
     return promise;
   };
 
+  walkthrough.deleteWalkthroughById= function (ID)
+  {
+
+    var promise = $http.delete(SeatEatsConstants.AppUrlApi+'walkthrough/'+ID);
+    return promise;
+  };
+
 
 
   return walkthrough;
