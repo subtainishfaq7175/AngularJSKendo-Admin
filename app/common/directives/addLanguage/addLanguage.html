@@ -22,22 +22,32 @@
                 <th><h6><b>Upload Flag</b></h6></th>
             </tr>
             <tr layout="row" width="100%" style="margin: 10px" ng-repeat="(pIndex,item) in addWidgetCtrl.objectList" flex>
-                <td><input k-content style="width: 100%"></td>
-                <td><input k-content style="width: 100%"></td>
+                <td><input k-content style="width: 100%" ng-model="item.title"></td>
+                <td><input k-content style="width: 100%" ng-model="item.content"></td>
                 <td> <input name="files" kendo-upload type="file" /></td>
-                <td> <md-button ng-disabled="addWidgetCtrl.scope.readonly || item.SpendType.PrimaryContactFlag"
+                <td> <md-button
+                                class="md-icon-button md-mini phone-button"
+                                ng-click="onKeyDown(item)"
+                >
+                    <md-icon class="phoneicons material-icons md-warn"
+
+
+                    >done
+                    </md-icon>
+                </md-button>
+
+                <td> <md-button
                                 class="md-icon-button md-mini phone-button"
 
                                 ng-click="addWidgetCtrl.deleteObject(item,pIndex)"
 
                 >
                     <md-icon class="phoneicons material-icons md-warn"
-                             ng-class="{'grey-icon':item.SpendType.PrimaryContactFlag}"
+
 
                     >remove_circle
                     </md-icon>
                 </md-button></td>
-                <td> <button class="k-primary">Save</button> </td>
 
             </tr>
         </table>

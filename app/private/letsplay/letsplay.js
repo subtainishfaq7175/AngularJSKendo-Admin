@@ -49,7 +49,7 @@ angular.module('yapp')
       },{
         title: "Delete",
         width: "120px",
-        template: '<a ng-click="editLetsplay(dataItem._id)" class="btn k-primary btn-outline btn-rounded btn-sm">Delete</a>'
+        template: '<a ng-click="deleteLetsplay(dataItem._id)" class="btn k-primary btn-outline btn-rounded btn-sm">Delete</a>'
       }]
     };
 

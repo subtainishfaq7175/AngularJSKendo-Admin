@@ -24,26 +24,71 @@ angular
         url: '',
         templateUrl: 'private/views/base.html'
       })
-        .state('login', {
+      .state('login', {
           url: '/login',
           parent: 'base',
           templateUrl: 'public/login/login.html',
           controller: 'LoginCtrl'
         })
-        .state('dashboard', {
+      .state('dashboard', {
           url: '/dashboard',
           parent: 'base',
           templateUrl: 'private/dashboard/dashboard.html',
           controller: 'DashboardCtrl'
         })
-          .state('home', {
+      .state('home', {
             url: '/home',
             parent: 'dashboard',
             controller: 'HomeCtrl',
             templateUrl: 'private/home/home.html'
           })
-          .state('masterdata', {
-            url: '/masterdata',
+      .state('masterdata', {
+        resolve:{
+
+          link:  function(masterdataService)
+          {
+            //get game here
+
+
+            return masterdataService.getMasterdataByType("link");
+          },
+          categories:  function(masterdataService)
+          {
+            //get game here
+
+
+            return masterdataService.getMasterdataByType("categories");
+          },
+          genre:  function(masterdataService)
+          {
+            //get game here
+
+
+            return masterdataService.getMasterdataByType("genre");
+          },
+          language:  function(masterdataService)
+          {
+            //get game here
+
+
+            return masterdataService.getMasterdataByType("language");
+          },
+          tags:  function(masterdataService)
+          {
+            //get game here
+
+
+            return masterdataService.getMasterdataByType("tags");
+          },
+          linktype:  function(masterdataService)
+          {
+            //get game here
+
+
+            return masterdataService.getMasterdataByType("linktype");
+          }},
+
+        url: '/masterdata',
             parent: 'dashboard',
             controller: 'MasterdataCtrl',
             templateUrl: 'private/masterdata/masterdata.html'
@@ -54,8 +99,7 @@ angular
             controller: 'NewsCtrl',
             templateUrl: 'private/news/news.html'
           })
-      .state('newsadd',
-        {
+      .state('newsadd', {
          url: '/newsadd',
         parent: 'dashboard',
         controller: 'NewsAddCtrl',
@@ -120,7 +164,7 @@ angular
 
         resolve:{
 
-          simpleObj:  function(letsplayService,$stateParams)
+          itemLetsplay:  function(letsplayService,$stateParams)
           {
             //get game here
 
@@ -132,7 +176,7 @@ angular
         controller: 'LetsplayEditCtrl',
         templateUrl: 'private/letsplay/edit/edit.html'
       })
- .state('walkthrough', {
+      .state('walkthrough', {
             url: '/walkthrough',
             parent: 'dashboard',
             controller: 'WalkthroughCtrl',
@@ -159,7 +203,7 @@ angular
         controller: 'WalkthroughEditCtrl',
         templateUrl: 'private/walkthrough/edit/edit.html'
       })
- .state('faqs', {
+      .state('faqs', {
             url: '/faqs',
             parent: 'dashboard',
             controller: 'FaqsCtrl',
@@ -186,19 +230,19 @@ angular
         controller: 'FaqsEditCtrl',
         templateUrl: 'private/faqs/edit/edit.html'
       })
- .state('messages', {
+      .state('messages', {
             url: '/messages',
             parent: 'dashboard',
             controller: 'MessagesCtrl',
             templateUrl: 'private/messages/messages.html'
           })
- .state('messagesadd', {
+      .state('messagesadd', {
             url: '/messagesadd',
             parent: 'dashboard',
             controller: 'MessagesAddCtrl',
             templateUrl: 'private/messages/add/add.html'
           })
- .state('comments', {
+      .state('comments', {
             url: '/comments',
             parent: 'dashboard',
             controller: 'CommentsCtrl',
@@ -210,7 +254,6 @@ angular
         controller: 'CommentsAddCtrl',
         templateUrl: 'private/comments/add/add.html'
       })
-
       .state('profiles', {
         url: '/profiles',
         parent: 'dashboard',

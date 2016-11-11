@@ -16,12 +16,30 @@ angular.module("yapp").factory('masterdataService',['$http','SeatEatsConstants',
     return promise;
   };
 
+  masterdata.getMasterdataByType= function (Type)
+  {
+
+    var promise = $http.get(SeatEatsConstants.AppUrlApi+'masterdata?type='+Type);
+    return promise;
+  };
+
   masterdata.deleteMasterdataById= function (ID)
   {
 
     var promise = $http.delete(SeatEatsConstants.AppUrlApi+'masterdata/'+ID);
     return promise;
   };
+
+
+  masterdata.postObj=function (obj)
+  {
+      if(angular.isDefined(obj._id))
+      return $http.put(SeatEatsConstants.AppUrlApi+'masterdata/'+ obj._id, obj);
+
+      return $http.post(SeatEatsConstants.AppUrlApi+'masterdata', obj);
+
+  };
+
 
 
 

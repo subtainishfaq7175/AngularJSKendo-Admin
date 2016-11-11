@@ -17,16 +17,30 @@
 
 
 
-        <input k-content >
+        <input k-content ng-model="item.content" >
 
-        <md-button ng-disabled="addWidgetCtrl.scope.readonly || item.SpendType.PrimaryContactFlag"
+
+        <md-button
+                   class="md-icon-button md-mini phone-button"
+
+                   ng-click="onKeyDown(item)"
+
+        >
+            <md-icon class="phoneicons material-icons md-warn"
+            >done
+            </md-icon>
+       </md-button>
+
+
+
+        <md-button
                    class="md-icon-button md-mini phone-button"
 
                    ng-click="addWidgetCtrl.deleteObject(item,pIndex)"
 
         >
             <md-icon class="phoneicons material-icons md-warn"
-                     ng-class="{'grey-icon':item.SpendType.PrimaryContactFlag}"
+
 
             >remove_circle
             </md-icon>

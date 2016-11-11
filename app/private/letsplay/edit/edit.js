@@ -2,31 +2,27 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('LetsplayEditCtrl', function($scope, $state,simpleObj) {
-    console.log(simpleObj);
+  .controller('LetsplayEditCtrl', function($scope, $state,itemLetsplay,$sce,letsplayService) {
+    console.log(itemLetsplay);
 
     $scope.$state = $state;
-    $scope.dateString;// = $state;
-    $scope.html;
-    $scope.value;
-    $scope.value2;
-    $scope.selectOptions = {
-      placeholder: "Select products...",
-      dataTextField: "ProductName",
-      dataValueField: "ProductID",
-      valuePrimitive: true,
-      autoBind: false,
-      dataSource: {
-        type: "odata",
-        serverFiltering: true,
-        transport: {
-          read: {
-            url: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Products",
-          }
-        }
-      }
-    };
-    $scope.selectedIds = [ 4, 7 ];
+    $scope.itemLetsplay = itemLetsplay.data;
+    $scope.content = $sce.trustAsHtml($scope.itemLetsplay.content);
+    if(!angular.isDefined($scope.itemLetsplay.episodes))
+      $scope.itemLetsplay["episodes"]=[];
 
+$scope.UpldateLetsPlay=UpldateLetsPlay;
+
+    function UpldateLetsPlay()
+    {
+      debugger;
+      letsplayService.putLetsplay($scope.itemLetsplay).then(function (response)
+      {
+
+        debugger;
+        console.log(response);
+      })
+
+    }
 
   });

@@ -15,6 +15,12 @@ angular.module("yapp").factory('letsplayService',['$http','SeatEatsConstants', f
     var promise = $http.get(SeatEatsConstants.AppUrlApi+'letsplays/'+ID);
     return promise;
   };
+  letsplay.putLetsplay= function (obj)
+  {
+
+    var promise = $http.put(SeatEatsConstants.AppUrlApi+'letsplays/'+obj._id,obj);
+    return promise;
+  };
 
   letsplay.deleteLetsplayById= function (ID)
   {
@@ -25,6 +31,11 @@ angular.module("yapp").factory('letsplayService',['$http','SeatEatsConstants', f
 
 
 
+  letsplay.postLetsplay=function (obj)
+  {
+    return $http.post(SeatEatsConstants.AppUrlApi+'letsplays', obj)
+
+  };
   return letsplay;
 
 }]);
