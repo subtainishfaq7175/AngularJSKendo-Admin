@@ -22,8 +22,18 @@ angular.module("yapp").factory('walkthroughService',['$http','SeatEatsConstants'
     var promise = $http.delete(SeatEatsConstants.AppUrlApi+'walkthrough/'+ID);
     return promise;
   };
+//postWalkthrough
+  walkthrough.postWalkthrough=function (obj)
+  {
+    return $http.post(SeatEatsConstants.AppUrlApi+'walkthrough', obj)
 
+  };
+  walkthrough.putWalkthrough= function (obj)
+  {
 
+    var promise = $http.put(SeatEatsConstants.AppUrlApi+'walkthrough/'+obj._id,obj);
+    return promise;
+  };
 
   return walkthrough;
 

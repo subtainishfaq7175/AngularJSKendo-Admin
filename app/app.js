@@ -7,7 +7,9 @@ angular
     'ngAnimate',
     'kendo.directives',
     'ngMaterial',
-    'ngStorage'
+    'ngStorage',
+    'angular-sortable-view',
+    'ngSanitize'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
@@ -191,7 +193,7 @@ angular
       .state('walkthroughedit', {
         resolve:{
 
-          simpleObj:  function(walkthroughService,$stateParams)
+          itemWalkthrough:  function(walkthroughService,$stateParams)
           {
             //get game here
 
