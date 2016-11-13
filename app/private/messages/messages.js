@@ -11,7 +11,7 @@ angular.module('yapp')
         transport: {
           read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Employees"
         },
-        pageSize: 5,
+        pageSize: 10,
         serverPaging: true,
         serverSorting: true
       },

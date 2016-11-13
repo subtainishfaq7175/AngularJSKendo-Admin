@@ -32,7 +32,7 @@ angular.module('yapp')
             total: "total"
           }
         ,
-        pageSize: 5,
+        pageSize: 10,
         serverPaging: true,
         serverSorting: true
       },

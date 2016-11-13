@@ -8,8 +8,8 @@ angular
     'kendo.directives',
     'ngMaterial',
     'ngStorage',
-    'angular-sortable-view',
-    'ngSanitize'
+    'ngSanitize',
+    'angular-sortable-view'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
