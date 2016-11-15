@@ -9,6 +9,7 @@ angular.module('yapp')
     $scope.model={};
     $scope.model.tags=[];
     $scope.model.genre=[];
+    $scope.model.language=[];
 
     $scope.selectOptionsLanguage = {
       filter: "contains",
@@ -80,25 +81,10 @@ angular.module('yapp')
       }
     };
 
-    $scope.selectOptions = {
-      placeholder: "Select products...",
-      dataTextField: "ProductName",
-      dataValueField: "ProductID",
-      valuePrimitive: true,
-      autoBind: false,
-      dataSource: {
-        type: "odata",
-        serverFiltering: true,
-        transport: {
-          read: {
-            url: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Products",
-          }
-        }
-      }
-    };
 
     $scope.selectedTags = [];
     $scope.selectedGenre = [];
+    $scope.selectedLanguage = [];
 
     $scope.mainUploadOptions={
       async: {
@@ -133,6 +119,10 @@ angular.module('yapp')
       for(var i=0;i<$scope.selectedGenre.length;i++)
       {
         $scope.model.genre.push({title: $scope.selectedGenre[i]});
+      }
+      for(var i=0;i<$scope.selectedLanguage.length;i++)
+      {
+        $scope.model.language.push({title: $scope.selectedLanguage[i]});
       }
 
       walkthroughService.postWalkthrough($scope.model).then(function (response) {
