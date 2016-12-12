@@ -9,7 +9,7 @@ angular.module('yapp')
     $scope.model={};
     $scope.model.tags=[];
     $scope.model.genre=[];
-    $scope.model.language=[];
+//    $scope.model.language;
 
     $scope.selectOptionsLanguage = {
       filter: "contains",
@@ -120,15 +120,16 @@ angular.module('yapp')
       {
         $scope.model.genre.push({title: $scope.selectedGenre[i]});
       }
-      for(var i=0;i<$scope.selectedLanguage.length;i++)
-      {
-        $scope.model.language.push({title: $scope.selectedLanguage[i]});
-      }
+
+        $scope.model.language=selectedLanguage;
+
 
       walkthroughService.postWalkthrough($scope.model).then(function (response) {
 
         debugger;
         console.log(response);
+        $state.go("walkthrough");
+
       })
 
     }

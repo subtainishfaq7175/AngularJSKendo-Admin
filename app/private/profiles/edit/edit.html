@@ -8,9 +8,9 @@
 
         <div class="container" >
 
-            <h6>Question</h6>
+            <h6>Username</h6>
 
-            <input k-content style="width: 100%" ng-model="model.title">
+            <input k-content style="width: 100%" ng-model="model.name">
 
 
 
@@ -19,9 +19,9 @@
         </div>
         <div class="container" >
 
-            <h6>Answere</h6>
+            <h6>User Role</h6>
 
-            <textarea kendo-editor k-ng-model="model.content"></textarea>
+            <input k-content style="width: 100%" ng-model="model.userrole">
 
 
 
@@ -29,8 +29,12 @@
 
         </div>
 
+
+
+
+
         <div class="container">
-            <button ng-click="publishFaq()" class="k-primary">Update</button>
+            <button ng-click="publishProfile()" class="k-primary">Update</button>
         </div>
     </div>
 </div>

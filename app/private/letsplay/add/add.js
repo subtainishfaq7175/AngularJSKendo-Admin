@@ -2,7 +2,7 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('LetsplayAddCtrl', function($scope, $state,SeatEatsConstants,masterdataService,letsplayService) {
+  .controller('LetsplayAddCtrl', function($scope, $state,SeatEatsConstants,masterdataService,letsplayService,$rootScope,toastr) {
 
     $scope.$state = $state;
     $scope.isImageUploading = false;
@@ -107,6 +107,7 @@ angular.module('yapp')
 
     function publishLetsplay() {
 
+
       console.log($scope.model.is_feed);
       for(var i=0;i<$scope.selectedTags.length;i++)
       {
@@ -117,11 +118,19 @@ angular.module('yapp')
         $scope.model.genre.push({title: $scope.selectedGenre[i]});
       }
       debugger;
+      $rootScope.scopeWorkingVariable = true;
 
       letsplayService.postLetsplay($scope.model).then(function (response) {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
 
         debugger;
         console.log(response);
+
+        $state.go("letsplay");
       })
 
     }

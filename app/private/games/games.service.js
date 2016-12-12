@@ -32,7 +32,11 @@ angular.module("yapp").factory('gamesService',['$http','SeatEatsConstants', func
 
   game.postGame=function (obj)
   {
-    return $http.post(SeatEatsConstants.AppUrlApi+'games', obj)
+    if(angular.isDefined(obj._id))
+      return $http.put(SeatEatsConstants.AppUrlApi+'games/'+obj._id, obj);
+    else
+      return $http.post(SeatEatsConstants.AppUrlApi+'games/', obj);
+
 
   };
 

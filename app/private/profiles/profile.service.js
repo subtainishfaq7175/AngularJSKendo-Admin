@@ -19,6 +19,10 @@ angular.module("yapp").factory('profilesService',['$http','SeatEatsConstants', f
   {
     return $http.get(SeatEatsConstants.AppUrlApi+'users/'+ id);
 
+  };profiles.updateProfile=function (obj)
+  {
+    return $http.put(SeatEatsConstants.AppUrlApi+'users/'+ obj._id,obj);
+
   };
 
   return profiles;

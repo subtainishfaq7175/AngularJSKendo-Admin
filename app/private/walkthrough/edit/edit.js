@@ -76,6 +76,8 @@ function UpldateWalkthrough()
 
     debugger;
     console.log(response);
+    $state.go("walkthrough");
+
   })
 
 

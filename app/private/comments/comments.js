@@ -2,13 +2,17 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('CommentsCtrl', function($scope, $state, SeatEatsConstants,commentsService) {
+  .controller('CommentsCtrl', function($scope, $state, SeatEatsConstants,commentsService,$rootScope) {
 
     $scope.$state = $state;
 
     $scope.deleteComment = function (ID) {
+      $rootScope.scopeWorkingVariable = true;
+
       commentsService.deletsCommentsById(ID).then(function (response)
         {
+          $rootScope.scopeWorkingVariable = false;
+
           $state.reload();
         });
 
@@ -19,22 +23,17 @@ angular.module('yapp')
         type: "json",
         transport: {
           read: SeatEatsConstants.AppUrlApi+'commentsadmin'
-        },
-
-        schema: {
-          data: "docs",
-          total: "total"
         }
-        ,
-        pageSize: 10,
-        serverPaging: true,
-        serverSorting: true
+
+
       },
-      sortable: true,
-      pageable: true,
       columns: [{
-        field: "content",
-        title: "Content",
+        field: "title",
+        title: "Comment",
+        width: "120px"
+      },{
+        field: "username",
+        title: "User",
         width: "120px"
       },{
         title: "Delete",

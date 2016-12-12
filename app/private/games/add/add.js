@@ -2,21 +2,22 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('GamesAddCtrl', function($scope, $state,SeatEatsConstants,gamesService) {
+  .controller('GamesAddCtrl', function($scope, $state,SeatEatsConstants,gamesService,$rootScope,toastr) {
 
 
     $scope.$state = $state;
     $scope.model={};
     $scope.model.tags=[];
     $scope.model.genre=[];
-    $scope.model.language=[];
+    $scope.model.languages=[];
     $scope.model.categories=[];
+    $scope.model.screen_images=[];
     $scope.isImageUploading = false;
     $scope.isImageUploadingScreen = false;
 
     $scope.selectOptionsLanguage = {
       filter: "contains",
-      placeholder: "Select Language...",
+      placeholder: "Select languages...",
       dataTextField: "content",
       dataValueField: "content",
       valuePrimitive: true,
@@ -32,7 +33,7 @@ angular.module('yapp')
         serverFiltering: true,
         transport: {
           read: {
-            url: SeatEatsConstants.AppUrlApi+"masterdata?type=language"
+            url: SeatEatsConstants.AppUrlApi+"masterdata?type=languages"
           }
         }
       }
@@ -156,6 +157,8 @@ angular.module('yapp')
 
     function publishGames() {
 
+
+
       for(var i=0;i<$scope.selectedTags.length;i++)
       {
         $scope.model.tags.push({title: $scope.selectedTags[i]});
@@ -166,7 +169,7 @@ angular.module('yapp')
       }
       for(var i=0;i<$scope.selectedLanguage.length;i++)
       {
-        $scope.model.language.push({title: $scope.selectedLanguage[i]});
+        $scope.model.languages.push({title: $scope.selectedLanguage[i]});
       }
       for(var i=0;i<$scope.selectedCategories.length;i++)
       {
@@ -176,8 +179,15 @@ angular.module('yapp')
    //if(!$scope.isImageUploading && !$scope.isImageUploadingScreen)
       gamesService.postGame($scope.model).then(function (response) {
 
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
         debugger;
         console.log(response);
+
+        $state.go("games");
       })
 
     }

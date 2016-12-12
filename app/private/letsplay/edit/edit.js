@@ -21,6 +21,8 @@ $scope.UpldateLetsPlay=UpldateLetsPlay;
 
         debugger;
         console.log(response);
+        $state.go("letsplay");
+
       })
 
     }

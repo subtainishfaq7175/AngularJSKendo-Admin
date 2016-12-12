@@ -2,7 +2,7 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('ProfilesCtrl', function($scope, $state, SeatEatsConstants,profilesService) {
+  .controller('ProfilesCtrl', function($scope, $state, SeatEatsConstants,profilesService,$rootScope,toastr) {
 
     $scope.$state = $state;
     $scope.editProfile = function (ID) {
@@ -12,8 +12,15 @@ angular.module('yapp')
     };
     $scope.deleteProfile = function (ID) {
       console.log(ID);
+      $rootScope.scopeWorkingVariable = true;
+
       profilesService.deletsProfilesById(ID).then(function (response)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
         $state.reload();
 
       });

@@ -11,7 +11,7 @@ angular.module("yapp").factory('commentsService',['$http','SeatEatsConstants', f
 //deleteCommentsById
   comments.deletsCommentsById=function (id)
   {
-    return $http.delete(SeatEatsConstants.AppUrlApi+'comments/'+ id);
+    return $http.delete(SeatEatsConstants.AppUrlApi+'commentsadmin/'+ id);
 
   };
 

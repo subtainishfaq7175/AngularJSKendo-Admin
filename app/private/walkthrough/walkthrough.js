@@ -2,7 +2,7 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('WalkthroughCtrl', function($scope, $state,SeatEatsConstants,walkthroughService) {
+  .controller('WalkthroughCtrl', function($scope, $state,SeatEatsConstants,walkthroughService,$rootScope,toastr) {
 
     $scope.$state = $state;
     $scope.editWalkthrough = function (ID)
@@ -13,8 +13,15 @@ angular.module('yapp')
     };
     $scope.deleteWalkthrough = function (ID)
     {
+      $rootScope.scopeWorkingVariable = true;
+
       walkthroughService.deleteWalkthroughById(ID).then(function (reponse)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
         $state.reload();
       });
       };

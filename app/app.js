@@ -9,7 +9,9 @@ angular
     'ngMaterial',
     'ngStorage',
     'ngSanitize',
-    'angular-sortable-view'
+    'angular-sortable-view',
+    'ngLoader',
+    'toastr'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
 
@@ -31,6 +33,12 @@ angular
           parent: 'base',
           templateUrl: 'public/login/login.html',
           controller: 'LoginCtrl'
+        })
+      .state('signup', {
+          url: '/signup',
+          parent: 'base',
+          templateUrl: 'public/signup/signup.html',
+          controller: 'SignupCtrl'
         })
       .state('dashboard', {
           url: '/dashboard',
@@ -287,7 +295,7 @@ angular
       });
 
   })
-.run(run);
+  .run(run);
 
 function run($rootScope, $http, $state, $localStorage) {
   // keep user logged in after page refresh
@@ -300,11 +308,24 @@ function run($rootScope, $http, $state, $localStorage) {
   $rootScope.$on('$stateChangeStart',
     function(event, toState, toParams, fromState, fromParams, options)
     {
-      var publicPages = ['login'];
+      $rootScope.scopeMessageVariable="Loading";
+      $rootScope.scopeWorkingVariable=true;
+
+
+      var publicPages = ['login','signup'];
       var restrictedPage = publicPages.indexOf(toState.name) === -1;
       if (restrictedPage && !$localStorage.currentUser) {
         $state.go('login');
       }
-    })
+
+
+    });
+
+
+
+  $rootScope.$on('$stateChangeSuccess',function(){
+    $rootScope.scopeWorkingVariable=false;
+
+  });
 
 }

@@ -27,6 +27,14 @@ angular.module("yapp").factory('newsService',['$http','SeatEatsConstants', funct
 
     var promise = $http.delete(SeatEatsConstants.AppUrlApi+'news/'+ID);
     return promise;
+  }; news.postNews= function (obj)
+  {
+var promise;
+    if(angular.isDefined(obj._id))
+      promise = $http.put(SeatEatsConstants.AppUrlApi+'news/'+obj._id,obj);
+      else
+     promise = $http.post(SeatEatsConstants.AppUrlApi+'news/',obj);
+    return promise;
   };
 
 

@@ -2,7 +2,7 @@
  * Created by subtainishfaq on 10/30/16.
  */
 angular.module('yapp')
-  .controller('MasterdataCtrl', function($scope, $state,masterdataService,link,categories,genre,language,tags,linktype)
+  .controller('MasterdataCtrl', function($scope, $state,masterdataService,link,categories,genre,language,tags,linktype,$rootScope,toastr)
   {
 
     $scope.$state = $state;
@@ -90,54 +90,103 @@ angular.module('yapp')
 
     function saveLanguage(index) {
       index.content_type="language";
+      $rootScope.scopeWorkingVariable = true;
+
       masterdataService.postObj(index).then(function (response)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
         index._id=response.data._id;
         console.log(response);
       });
     }
     function saveTag(index) {
       index.content_type="tags";
+      $rootScope.scopeWorkingVariable = true;
+
       masterdataService.postObj(index).then(function (response)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
         index._id=response.data._id;
         console.log(response);
       });
     }
     function saveLinkType(index) {
       index.content_type="linktype";
+      $rootScope.scopeWorkingVariable = true;
+
       masterdataService.postObj(index).then(function (response)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
         index._id=response.data._id;
         console.log(response);
       });
     }
     function saveCategory(index) {
       index.content_type="categories";
+      $rootScope.scopeWorkingVariable = true;
+
       masterdataService.postObj(index).then(function (response)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
         index._id=response.data._id;
 
         console.log(response);
       });
     }
     function removeCategory(id) {
+      $rootScope.scopeWorkingVariable = true;
+
       masterdataService.deleteMasterdataById(id).then(function (response)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
       console.log(response);
       });
     }
     function saveGenre(index) {
       index.content_type="genre";
+      $rootScope.scopeWorkingVariable = true;
+
       masterdataService.postObj(index).then(function (response)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
         index._id=response.data._id;
         console.log(response);
       });
     }
     function removeGenre(id) {
+      $rootScope.scopeWorkingVariable = true;
+
       masterdataService.deleteMasterdataById(id).then(function (response)
       {
+        $rootScope.scopeWorkingVariable = false;
+        if(response.status=200)
+          toastr.success('Done','Operation Complete');
+        else
+          toastr.error('Error','Operation Was not complete');
       console.log(response);
       });
     }
@@ -146,11 +195,16 @@ angular.module('yapp')
 switch (index)
 {
   case 0:
+    $rootScope.scopeWorkingVariable = true;
+
     $scope.model.youtube.title="youtube";
     $scope.model.youtube.content_type="link";
+
     masterdataService.postObj($scope.model.youtube).then(getResponse );
     break;
   case 1:
+    $rootScope.scopeWorkingVariable = true;
+
     $scope.model.vimeo.title="vimeo";
     $scope.model.vimeo.content_type="link";
     masterdataService.postObj($scope.model.vimeo).then(getResponse );
@@ -159,18 +213,24 @@ switch (index)
   case 2:
     $scope.model.dailymotion.title="dailymotion";
     $scope.model.dailymotion.content_type="link";
+    $rootScope.scopeWorkingVariable = true;
+
     masterdataService.postObj($scope.model.dailymotion).then(getResponse );
 
     break;
   case 3:
     $scope.model.myvideo.title="myvideo";
     $scope.model.myvideo.content_type="link";
+    $rootScope.scopeWorkingVariable = true;
+
     masterdataService.postObj($scope.model.myvideo).then(getResponse );
 
     break;
   case 4:
     $scope.model.clipfish.title="clipfish";
     $scope.model.clipfish.content_type="link";
+    $rootScope.scopeWorkingVariable = true;
+
     masterdataService.postObj($scope.model.clipfish).then(getResponse );
 
     break;
@@ -178,6 +238,8 @@ switch (index)
   case 5:
     $scope.model.twitch.title="twitch";
     $scope.model.twitch.content_type="link";
+    $rootScope.scopeWorkingVariable = true;
+
     masterdataService.postObj($scope.model.twitch).then(getResponse );
 
     break;
@@ -185,6 +247,8 @@ switch (index)
   case 6:
     $scope.model.sevenload.title="sevenload";
     $scope.model.sevenload.content_type="link";
+    $rootScope.scopeWorkingVariable = true;
+
     masterdataService.postObj($scope.model.sevenload).then(getResponse );
 
 
@@ -193,6 +257,11 @@ switch (index)
 }
     }
     function getResponse () {
+      $rootScope.scopeWorkingVariable = false;
+      if(response.status=200)
+        toastr.success('Done','Operation Complete');
+      else
+        toastr.error('Error','Operation Was not complete');
 $state.reload();
     }
 

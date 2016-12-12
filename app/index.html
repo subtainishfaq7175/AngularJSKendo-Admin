@@ -18,10 +18,13 @@
 
       <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-      <link rel="stylesheet" href="../bower_components/kendo/styles/web/kendo.common.min.css" />
-      <link rel="stylesheet" href="../bower_components/kendo/styles/web/kendo.default.min.css" />
-      <link rel="stylesheet" href="../bower_components/kendo/styles/web/kendo.default.mobile.min.css" />
-    <!-- endbuild -->
+      <link rel="stylesheet" href="bower_components/kendo/styles/web/kendo.common.min.css" />
+      <link rel="stylesheet" href="bower_components/kendo/styles/web/kendo.default.min.css" />
+      <link rel="stylesheet" href="bower_components/kendo/styles/web/kendo.default.mobile.min.css" />
+      <link rel="stylesheet" href="bower_components/ng-loaders/ngLoader.min.css">
+      <link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+
+      <!-- endbuild -->
   </head>
   <body ng-app="yapp">
     <!--[if lt IE 7]>
@@ -29,8 +32,16 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <loader
+        working="scopeWorkingVariable"
+        disable-background="true"
+        message="scopeMessageVariable"
+        template="9">
+    </loader>
     <div class="">
-      <div ui-view></div>
+      <div ui-view>
+
+      </div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -46,23 +57,23 @@
 
     <!-- build:js scripts/oldieshim.js -->
     <!--[if lt IE 9]>
-    <script src="../bower_components/es5-shim/es5-shim.js"></script>
-    <script src="../bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
     <![endif]-->
     <!-- endbuild -->
-    <script src="../bower_components/jquery-2.2.4/index.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
 
 
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="../bower_components/ui-router/release/angular-ui-router.js"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    <script src="../bower_components/kendo/js/kendo.all.js"></script>
+    <script src="bower_components/kendo/js/kendo.all.js"></script>
 
 
     <!-- Angular Material requires Angular.js Libraries -->
@@ -81,6 +92,7 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="app.js"></script>
     <script src="public/login/login.js"></script>
+    <script src="public/signup/signup.js"></script>
     <script src="private/dashboard/dashboard.js"></script>
     <script src="private/home/home.js"></script>
     <script src="private/masterdata/masterdata.js"></script>
@@ -103,6 +115,7 @@
     <script src="private/walkthrough/walkthrough.service.js"></script>
     <script src="private/messages/messages.js"></script>
     <script src="private/messages/add/add.js"></script>
+    <script src="private/messages/message.service.js"></script>
     <script src="private/faqs/faqs.js"></script>
     <script src="private/faqs/add/add.js"></script>
     <script src="private/faqs/edit/edit.js"></script>
@@ -120,7 +133,10 @@
     <script src="common/directives/addimages/addimages.js"></script>
     <script src="common/services/authentication.service.js"></script>
     <script src="common/app-constants.js"></script>
-    <script src="../bower_components/angular-sortable-view/src/angular-sortable-view.js"></script>
+    <script src="bower_components/angular-sortable-view/src/angular-sortable-view.js"></script>
+    <script src="bower_components/ng-loaders/ngLoader.min.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
     <!-- endbuild -->
   </body>
 </html>
